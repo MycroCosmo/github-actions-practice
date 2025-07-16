@@ -1,14 +1,26 @@
+# Workflow 명
 name: Github actions 실행시켜보기
 
+# main이라는 브랜치에 push 될 때 아래 Workflow 실행
 on:
   push:
     branches:
       - main
-
+# 하나의 Workflow는 1개 이상의 Job으로 구성
+# 에러 Job은 기본적으로 병렬적 수행
 jobs:
+  # Job을 식별하기 위한 id
   My-Deploy-Job:
+    # ubuntu 환경 / 가장 최신 버전
     runs-on: ubuntu-latest
-
+    
+    # Step: 특정 작업을 수행하는 가장 작은 단위
+    # Job은 여러 Step들로 구성되어 있음
     steps:
       - name: Hellow World 찍기
         run: echo "Hello World"
+
+      - name: 여러 명령어 문장 작성
+        run:
+          echo "Good"
+          echo "Morning"
